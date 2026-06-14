@@ -7,7 +7,7 @@ RESTful API Manajemen Antrean Puskesmas — Capstone Project Neo Telemetri 2026
 - **Database**: MySQL (via Laragon) + Prisma ORM
 - **Auth**: JWT + bcrypt
 - **Validation**: Zod
-- **Docs**: Swagger / OpenAPI 3.0
+- **Docs**: Swagger
 
 ## Setup Lokal
 
@@ -67,10 +67,16 @@ Swagger UI: `http://localhost:3000/api-docs`
 | GET | `/api/auth/profile` | All | Profil user login |
 | GET | `/api/dokter` | All | Daftar dokter + jadwal |
 | GET | `/api/dokter/:id` | All | Detail dokter |
+| GET | `/api/dokter/:id/jadwal` | All | Jadwal & kuota dokter |
 | POST | `/api/antrean` | Pasien | Daftar antrean |
 | GET | `/api/antrean/saya` | Pasien | Antrean milik saya |
-| GET | `/api/antrean` | Petugas | Semua antrean |
+| GET | `/api/antrean` | Petugas | Semua antrean (pagination & filter status) |
+| GET | `/api/antrean/:id` | All | Detail antrean |
 | PATCH | `/api/antrean/:id/status` | Petugas | Update status antrean |
 
+## Dokumen Pendukung
+- ERD: https://drive.google.com/file/d/1NLYGxY-7Ns2M44nxv3kZCsGvBmByKObM/view?usp=drive_link
+- Postman Collection: *(link Google Drive — isi setelah upload)*
+
 ## Link Deploy
-> (isi setelah deploy ke Railway)
+> next progress 
