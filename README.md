@@ -76,7 +76,7 @@ Swagger UI: `http://localhost:3000/api-docs`
 
 ## Dokumen Pendukung
 - ERD: https://drive.google.com/file/d/1NLYGxY-7Ns2M44nxv3kZCsGvBmByKObM/view?usp=drive_link
-- Postman Collection: *(link Google Drive — isi setelah upload)*
+- Postman Collection: https://drive.google.com/file/d/1Efraf5klqakNsCYbK2smLsp9q1nuie4I/view?usp=sharing
 
 ## Link Deploy
 > next progress 
