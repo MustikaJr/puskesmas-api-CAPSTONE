@@ -1,0 +1,94 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  PASIEN
+  PETUGAS
+}
+
+enum Hari {
+  SENIN
+  SELASA
+  RABU
+  KAMIS
+  JUMAT
+  SABTU
+}
+
+enum StatusAntrean {
+  WAITING
+  CALLED
+  DONE
+  SKIP
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(PASIEN)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  pasien    Pasien?
+
+  @@map("users")
+}
+
+model Pasien {
+  id           Int      @id @default(autoincrement())
+  userId       Int      @unique
+  nik          String   @unique
+  noHp         String
+  tanggalLahir DateTime
+  alamat       String
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  antrean      Antrean[]
+
+  @@map("pasien")
+}
+
+model Dokter {
+  id           Int      @id @default(autoincrement())
+  nama         String
+  spesialisasi String
+  noStr        String   @unique
+  createdAt    DateTime @default(now())
+  jadwal       Jadwal[]
+
+  @@map("dokter")
+}
+
+model Jadwal {
+  id         Int    @id @default(autoincrement())
+  dokterId   Int
+  hari       Hari
+  jamMulai   String
+  jamSelesai String
+  kuota      Int    @default(20)
+  dokter     Dokter  @relation(fields: [dokterId], references: [id], onDelete: Cascade)
+  antrean    Antrean[]
+
+  @@map("jadwal")
+}
+
+model Antrean {
+  id           Int           @id @default(autoincrement())
+  pasienId     Int
+  jadwalId     Int
+  nomorAntrean String
+  status       StatusAntrean @default(WAITING)
+  keluhan      String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  pasien       Pasien  @relation(fields: [pasienId], references: [id])
+  jadwal       Jadwal  @relation(fields: [jadwalId], references: [id])
+
+  @@map("antrean")
+}
