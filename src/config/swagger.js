@@ -8,9 +8,14 @@ const options = {
       version: '1.0.0',
       description: 'API Manajemen Antrean Puskesmas — Neo Telemetri Capstone 2026',
     },
-    servers: [
-      { url: process.env.BASE_URL || 'http://localhost:3000', description: 'Server' },
-    ],
+servers: [
+  {
+    url: process.env.NODE_ENV === 'production'
+      ? 'https://puskesmas-api-capstone-production.up.railway.app'
+      : `http://localhost:${process.env.PORT || 3000}`,
+    description: process.env.NODE_ENV === 'production' ? 'Production' : 'Development',
+  },
+],
     components: {
       securitySchemes: {
         bearerAuth: {
