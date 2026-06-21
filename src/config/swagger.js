@@ -6,7 +6,7 @@ const options = {
     info: {
       title: 'Puskesmas Queue API',
       version: '1.0.0',
-      description: 'API Manajemen Antrean Puskesmas — Neo Telemetri Capstone 2026',
+      description: 'API Manajemen Antrean Puskesmas —  Capstone OR Neo Telemetri 15 - Mustika Jr (2511512004)',
     },
 servers: [
   {
