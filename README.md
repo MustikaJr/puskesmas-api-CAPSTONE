@@ -79,4 +79,5 @@ Swagger UI: `http://localhost:3000/api-docs`
 - Postman Collection: https://drive.google.com/file/d/1Efraf5klqakNsCYbK2smLsp9q1nuie4I/view?usp=sharing
 
 ## Link Deploy
-> next progress 
+> API: https://puskesmas-api-capstone-production.up.railway.app
+ Swagger: https://puskesmas-api-capstone-production.up.railway.app/api-docs
