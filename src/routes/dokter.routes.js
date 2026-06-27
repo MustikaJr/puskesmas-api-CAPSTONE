@@ -1,20 +1,24 @@
-/**
- * @swagger
- * /api/dokter:
- *   get:
- *     summary: Ambil semua dokter
- *     tags: [Dokter]
- *     responses:
- *       200:
- *         description: Berhasil
- */
-router.get('/', authenticate, getAllDokter);
+const express = require('express');
+const router = express.Router();
+const { getAllDokter, getDokterById, getJadwalDokter } = require('../controllers/dokter.controller');
+const { authenticate } = require('../middlewares/auth.middleware');
 
 /**
  * @swagger
- * /api/dokter/{id}:
+ * tags:
+ *   name: Dokter
+ *   description: Informasi dokter dan jadwal
+ */
+
+router.get('/', authenticate, getAllDokter);
+
+router.get('/:id', authenticate, getDokterById);
+
+/**
+ * @swagger
+ * /api/dokter/{id}/jadwal:
  *   get:
- *     summary: Ambil detail dokter berdasarkan ID
+ *     summary: Ambil jadwal dokter berdasarkan ID dokter
  *     tags: [Dokter]
  *     parameters:
  *       - in: path
@@ -27,4 +31,6 @@ router.get('/', authenticate, getAllDokter);
  *       404:
  *         description: Dokter tidak ditemukan
  */
-router.get('/:id', authenticate, getDokterById);
+router.get('/:id/jadwal', authenticate, getJadwalDokter);
+
+module.exports = router;
