@@ -76,7 +76,7 @@ Swagger UI: `http://localhost:3000/api-docs`
 
 ## Dokumen Pendukung
 - ERD: https://drive.google.com/file/d/1NLYGxY-7Ns2M44nxv3kZCsGvBmByKObM/view?usp=drive_link
-- Postman Collection: https://drive.google.com/file/d/1Efraf5klqakNsCYbK2smLsp9q1nuie4I/view?usp=sharing
+- Postman Collection: https://drive.google.com/file/d/1-5GLCreKmGL47h8BARFNJbvODpPZotTa/view?usp=drive_link
 
 ## Link Deploy
 > - API: https://puskesmas-api-capstone-production.up.railway.app
