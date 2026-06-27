@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./config/swagger');
 const { errorHandler } = require('./middlewares/errorHandler.middleware');
@@ -10,6 +11,7 @@ const antreanRoutes = require('./routes/antrean.routes');
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 
 // Swagger UI

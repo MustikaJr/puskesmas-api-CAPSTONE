@@ -17,4 +17,25 @@ const getDokterById = async (id) => {
   return dokter;
 };
 
-module.exports = { getAllDokter, getDokterById };
+const getJadwalDokter = async (id) => {
+  const dokter = await prisma.dokter.findUnique({
+    where: { id: Number(id) },
+    include: {
+      jadwal: {
+        include: {
+          _count: { select: { antrean: true } },
+        },
+      },
+    },
+  });
+
+  if (!dokter) {
+    const err = new Error('Dokter tidak ditemukan');
+    err.statusCode = 404;
+    throw err;
+  }
+
+  return dokter;
+};
+
+module.exports = { getAllDokter, getDokterById, getJadwalDokter };

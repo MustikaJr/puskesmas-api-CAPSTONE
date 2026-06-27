@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getAllDokter, getDokterById } = require('../controllers/dokter.controller');
+const { getAllDokter, getDokterById, getJadwalDokter } = require('../controllers/dokter.controller');
 const { authenticate } = require('../middlewares/auth.middleware');
 
 /**
@@ -10,23 +10,15 @@ const { authenticate } = require('../middlewares/auth.middleware');
  *   description: Informasi dokter dan jadwal
  */
 
-/**
- * @swagger
- * /api/dokter:
- *   get:
- *     summary: Ambil semua data dokter beserta jadwal
- *     tags: [Dokter]
- *     responses:
- *       200:
- *         description: Berhasil
- */
 router.get('/', authenticate, getAllDokter);
+
+router.get('/:id', authenticate, getDokterById);
 
 /**
  * @swagger
- * /api/dokter/{id}:
+ * /api/dokter/{id}/jadwal:
  *   get:
- *     summary: Ambil data dokter berdasarkan ID
+ *     summary: Ambil jadwal dokter berdasarkan ID dokter
  *     tags: [Dokter]
  *     parameters:
  *       - in: path
@@ -39,6 +31,6 @@ router.get('/', authenticate, getAllDokter);
  *       404:
  *         description: Dokter tidak ditemukan
  */
-router.get('/:id', authenticate, getDokterById);
+router.get('/:id/jadwal', authenticate, getJadwalDokter);
 
 module.exports = router;

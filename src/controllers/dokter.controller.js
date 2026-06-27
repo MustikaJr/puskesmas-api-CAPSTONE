@@ -19,4 +19,13 @@ const getDokterById = async (req, res, next) => {
   }
 };
 
-module.exports = { getAllDokter, getDokterById };
+const getJadwalDokter = async (req, res, next) => {
+  try {
+    const dokter = await dokterService.getJadwalDokter(req.params.id);
+    return successResponse(res, 'Jadwal dokter berhasil diambil', dokter);
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = { getAllDokter, getDokterById, getJadwalDokter };
